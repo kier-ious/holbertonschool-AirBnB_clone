@@ -46,13 +46,19 @@ class FileStorage():
         }
         try:
             with open(self.__file_path, 'r') as f:
+                # Iterate through JSON data
                 for key, value in json.load(f).items():
+
+                    # Get class name from object's dictionary
                     obj_class_name = value.get("__class__")
+
                     if obj_class_name in class_mapping:
                         del value["__class__"]
                         obj_class = class_mapping[obj_class_name]
                         try:
+                            # Create instance of class using object data
                             obj = obj_class(**value)
+                            # Store instance in file system
                             self.new(obj)
                         except Exception as e:
                             print(f"Error loading data from JSON: {e}")

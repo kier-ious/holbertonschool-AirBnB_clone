@@ -48,11 +48,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             class_name = arg.strip()
             if class_name in self.classes:
-                """
-                globals returns dictionary of current symbol
-                table and instantiates object of type class_name
-                input by user
-                """
+                # Instantiate object of specified class
                 new_instance = globals()[class_name]()
                 new_instance.save()
                 print(new_instance.id)

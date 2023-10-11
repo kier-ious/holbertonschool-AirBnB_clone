@@ -23,6 +23,7 @@ class BaseModel:
                         )
                     setattr(self, key, value)
         else:
+            # Add object to storage file
             models.storage.new(self)
 
     def __str__(self):
